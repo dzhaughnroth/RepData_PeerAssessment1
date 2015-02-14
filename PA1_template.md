@@ -56,14 +56,6 @@ mean( totalStepsByDate )
 ```
 
 ```r
-var( totalStepsByDate )
-```
-
-```
-## [1] 18225902
-```
-
-```r
 median( totalStepsByDate )
 ```
 
@@ -152,16 +144,17 @@ meanStepsByInterval[ meanStepsByInterval$steps > 90, ]
 ## 226     1845  99.45283
 ```
 
-This plot shows a distinct peak of activity around 8:30 a.m., a moderate level 
+This plot shows high activity during the 8 a.m. hour, a distinct peak of activity 
+around 8:35 a.m.. Otherwise, we note a moderate level 
 of activity between 6 a.m. and 7 p.m with a few local maxima, and 
 almost no activity bewteen 11 p.m. and 5 a.m.. 
 
-These data do not enable us to assess whether the peak at 8:30 a.m. is 
-due to a large number of neurotic morning exercisers, or whether it rather 
+These data do not enable us to assess whether high morning level is 
+due to a large number of neurotic morning exercisers, whether it
 reflects the pathologically elevated activity levels of a relatively small number 
-of such troubled individuals. Resolution to this key question appears problematic, 
-owing to the difficulty of conducting reliable research in such grueling 
-A.M. conditions.
+of such troubled individuals, or a combination of the two. Resolving this 
+key question appears problematic, owing to the difficulty of conducting 
+reliable research in such grueling morning conditions.
 
 ## Imputing missing values
 
@@ -232,6 +225,14 @@ norm( as.matrix( data$imputedSteps[2400:2430] - data$steps[2400:2430] ) ) # -> 0
 ```
 ## [1] 0
 ```
+
+```r
+imputedTotalStepsByDate <- aggregate( imputedSteps ~ date, data, sum )$imputedSteps
+
+hist( imputedTotalStepsByDate, bins <- 15)
+```
+
+![](PA1_template_files/figure-html/unnamed-chunk-5-1.png) 
 
 ## Are there differences in activity patterns between weekdays and weekends?
 
